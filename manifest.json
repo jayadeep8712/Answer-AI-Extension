@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "AI Answer",
+  "version": "1.0",
+  "description": "Captures audio from meetings, detects questions, and fetches answers from the Gemini API.",
+  "permissions": [
+    "tabCapture",
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "chat.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
